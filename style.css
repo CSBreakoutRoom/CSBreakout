@@ -19,9 +19,12 @@ h3{
     color:greenyellow;
     text-align: center;
 }
+
+/*Typerwriter effects*/
+
 /*https://css-tricks.com/snippets/css/typewriter-effect/*/
 h3 {
-    overflow: hidden; /*Ensures the content is not revealed until the animation*/
+    overflow: hidden; /*Hides the content until the typewriter starts*/
     border-right: .15em solid rgb(0, 0, 255); /* The typwriter cursor*/
     white-space: nowrap; /*Keeps the content on a single line*/
     margin: 0 auto; /*Gives that scrolling effect as the typing happens*/
@@ -53,4 +56,43 @@ h3 {
 
 body{
     background-color: black;
+}
+/*Styling for the submit buttons*/
+
+button {
+  background-color: greenyellow;
+  color: black;
+  border: 2px solid greenyellow;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: "Fira Code";
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  background-color: black;
+  color: greenyellow;
+}
+
+/*Styling for the textboxes*/
+
+input[type="text"] {
+  background-color: black;
+  color: greenyellow;
+  border: 2px solid greenyellow;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Fira Code";
+  font-size: 14px;
+  width: 200px;
+  box-shadow: 0 0 10px greenyellow;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 15px lime;
+  border-color: lime;
 }
