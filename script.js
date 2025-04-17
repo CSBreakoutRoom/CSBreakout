@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
 const lockData = {
     1: { code: "48531", nextClass: "pass2" },
     2: { code: "26075969", nextClass: "pass3" },
-    3: { code: "2222", nextClass: "pass4" },
+    3: { code: "3491", nextClass: "pass4" },
     4: { code: "8100", nextClass: "pass5" },
     5: { code: "2695", nextClass: "pass6" },
-    6: { code: "5555", nextClass: "pass7" },
-    7: { code: "6666", nextClass: "pass8" },
+    6: { code: "9121719", nextClass: "pass7" },
+    7: { code: "LUCK", nextClass: "pass8" },
     8: { code: "4132", nextClass: null }
 };
 
