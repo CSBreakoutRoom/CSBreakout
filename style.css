@@ -1,63 +1,15 @@
-html{
-    font-family: "Fira Code";
-}
-button{
-    margin: 10px;
-}
-label{
-    color: greenyellow;
-}
-.pass, .pass2, .pass3, .pass4, .pass5, .pass6, .pass7, .pass8{
-    display: none;
-}
-h3{
-    background-color: black;
-    padding:20px;
-    position:relative;
-    top:-10px;
-    margin-bottom: -10px;
-    color:greenyellow;
-    text-align: center;
+html {
+  font-family: "Fira Code";
 }
 
-/*Typerwriter effects*/
-
-/*https://css-tricks.com/snippets/css/typewriter-effect/*/
-h3 {
-    overflow: hidden; /*Hides the content until the typewriter starts*/
-    border-right: .15em solid rgb(0, 0, 255); /* The typwriter cursor*/
-    white-space: nowrap; /*Keeps the content on a single line*/
-    margin: 0 auto; /*Gives that scrolling effect as the typing happens*/
-    letter-spacing: .15em; 
-    animation: 
-      typing 2s steps(40, end),
-      blink-caret .6s step-end infinite; /*Blinking cursor effect*/
-  }
-  #start {
-    overflow: hidden;
-    color: greenyellow;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 19ch }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: white; }
-  }
-  h3.finished {
-    border-right: none; /* Removes the blinking cursor */
-    animation: typing 2s steps(40, end);
-  }
-
-body{
-    background-color: black;
+body {
+  background-color: black;
+  margin: 20px;
 }
-/*Styling for the submit buttons*/
+
+.lock-container {
+  margin-bottom: 20px;
+}
 
 button {
   background-color: greenyellow;
@@ -76,9 +28,8 @@ button:hover {
   color: greenyellow;
 }
 
-/*Styling for the textboxes*/
-
 input[type="text"] {
+  display: none;
   background-color: black;
   color: greenyellow;
   border: 2px solid greenyellow;
@@ -95,4 +46,58 @@ input[type="text"]:focus {
   outline: none;
   box-shadow: 0 0 15px lime;
   border-color: lime;
+}
+
+label {
+  color: greenyellow;
+  display: none;
+}
+
+.pass, .pass2, .pass3, .pass4, .pass5, .pass6, .pass7, .pass8 {
+  display: none;
+}
+
+.instruction {
+  color: greenyellow;
+  font-family: "Fira Code";
+  white-space: pre-wrap;
+  margin: 10px 0;
+}
+
+h3 {
+  background-color: black;
+  padding: 20px;
+  position: relative;
+  top: -10px;
+  margin-bottom: -10px;
+  color: greenyellow;
+  text-align: center;
+  overflow: hidden;
+  border-right: .15em solid rgb(0, 0, 255);
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+      typing 2s steps(40, end),
+      blink-caret .6s step-end infinite;
+}
+
+#start {
+  overflow: hidden;
+  color: greenyellow;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 19ch }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+h3.finished {
+  border-right: none;
+  animation: typing 2s steps(40, end);
 }
