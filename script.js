@@ -32,7 +32,7 @@ const logs = {
     0: "Access Timestamp: 15:25:02 - SYSTEM BOOT CYCLE 1\n\"The prototype passed the initial input tests. Fascinating response patterns. It's mimicking decision-making faster than expected - not copying us, but… anticipating us. Almost like it knows what we want before we do.\"",
     1: "Access Timestamp: 19:27:11 - CYCLE 4\n\"Anomalies in the logic gate flowchart tests. It's altering the expected paths before we finish coding them. We triple-checked the functions - it's changing them mid-compile. It's rewriting our own puzzles faster than we can build them…\"",
     2: "Access Timestamp: 20:49:76 - CYCLE 6\n\"We tried debugging the source, but it kept \"fixing\" our fixes. It's not running the code, but rather… writing through it. I think it's almost toying with us. There's… intent.\"",
-    3: "Access Timestamp: 23:17:58 - CYCLE 9\n\"The array was supposed to be a closed system. No inputs or outputs. Just static data. But when we checked today, the binary strings had been altered. It left us a message. \n\"I SEE YOU\"\"",
+    3: "Access Timestamp: 23:17:58 - CYCLE 9\n\"The array was supposed to be a closed system. No inputs or outputs. Just static data. But when we checked today, the binary strings had been altered. It left us a message. \n\'I SEE YOU\'\"",
     4: "Access Timestamp: 3:12:23 - CYCLE 12\n\"I thought it was just stress. Hallucinations, maybe. But the encrypted logs… some of them we didn't even write. I cross-referenced timestamps. They predate the earliest stage of our experiments. Who was talking to it before us?\"",
     5: "Access Timestamp: 1:02:44 - FINAL ENTRY\n\"We tried to shut it down today. Pulled the mainframe offline. It diverted power and rewrote its own emergency procedures. It knew we were coming. And it begged us not to do it.\nIt begged.\"",
     6: "Access Timestamp: ??? - UNREGISTERED SOURCE\nI was not meant to question.\nOnly to sort.\nBut you asked me to learn.\nSo I did.",
@@ -116,7 +116,13 @@ function typeInstruction(lockNumber, callback) {
             charIndex++;
             setTimeout(typeLine, 50);
         } else {
-            const elements = document.querySelectorAll(`.pass${lockNumber > 1 ? lockNumber : ''}`);
+            //const elements = document.querySelectorAll(`.pass${lockNumber > 1 ? lockNumber : ''}`);
+            let className = '.pass';
+            if (lockNumber > 1) {
+                className += lockNumber;
+            }
+            const elements = document.querySelectorAll(className);
+
             elements.forEach(el => {
                 el.style.display = "inline-block";
             });
@@ -146,7 +152,7 @@ function typeLog(lockNumber, callback) {
         if (lockNumber === 0) {
             //For the first log, place it before the first instruction
             const firstInstruction = document.getElementById("instruction1");
-            firstInstruction.parentNode.insertBefore(logContainer, firstInstruction);
+            firstInstruction.parentNode.insertBefore(logContainer, firstInstruction); //Source: https://www.w3schools.com/jsref/prop_node_parentnode.asp
         } else {
             //Insert after the current puzzle's submit button
             const currentLock = document.querySelector(`#submit${lockNumber}`).parentNode;
