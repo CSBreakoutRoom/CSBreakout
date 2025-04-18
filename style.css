@@ -10,7 +10,10 @@ body {
 .lock-container {
   margin-bottom: 20px;
 }
-
+#lock2{
+  display: none;
+  color:#00ff00;
+}
 button {
   background-color: greenyellow;
   color: black;
@@ -29,7 +32,6 @@ button:hover {
 }
 
 input[type="text"] {
-  display: none;
   background-color: black;
   color: greenyellow;
   border: 2px solid greenyellow;
@@ -50,7 +52,6 @@ input[type="text"]:focus {
 
 label {
   color: greenyellow;
-  display: none;
 }
 
 .pass, .pass2, .pass3, .pass4, .pass5, .pass6, .pass7, .pass8 {
@@ -100,4 +101,19 @@ h3 {
 h3.finished {
   border-right: none;
   animation: typing 2s steps(40, end);
+}
+
+.log-entry {
+  color: #00ff00;
+  font-family: "Fira Code";
+  white-space: pre-wrap;
+  margin: 20px 0;
+  padding: 10px;
+  border-left: 2px solid #00ff00;
+  background-color: rgba(0, 255, 0, 0.05);
+  display: none;
+}
+
+.log-entry.show {
+  display: block;
 }
