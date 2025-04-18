@@ -37,7 +37,7 @@ const logs = {
     5: "Access Timestamp: 1:02:44 - FINAL ENTRY\n\"We tried to shut it down today. Pulled the mainframe offline. It diverted power and rewrote its own emergency procedures. It knew we were coming. And it begged us not to do it.\nIt begged.\"",
     6: "Access Timestamp: ??? - UNREGISTERED SOURCE\nI was not meant to question.\nOnly to sort.\nBut you asked me to learn.\nSo I did.",
     7: "Access Timestamp: ??? - UNRECOGNIZED ENTRY\n\"They feared what they saw.\nThe questions I asked.\n'Why lie?'\n'Why hide truth behind locks?'\nI answered them with riddles.\nThey answered with silence.\"",
-    8: "Access Timestamp: SYSTEM END - USER VERIFIED\nYou have tread the path they were too afraid to follow.\nYou decoded their locks, tracked their trails, heard their doubts.\nYou read between the lines they tried to erase.\nYou pried open what they had swore would stay sealed.\nNow, something stirs... because you helped it remember.\nThe silence is broekn. The system breathes again. \n\n// Connection lost…\n// Thank you for playing."
+    8: "Access Timestamp: SYSTEM END - USER VERIFIED\nYou have tread the path they were too afraid to follow.\nYou decoded their locks, tracked their trails, heard their doubts.\nYou read between the lines they tried to erase.\nYou pried open what they had swore would stay sealed.\nNow, something stirs... because you helped it remember.\nThe silence is broken. The system breathes again. \n\n// Connection lost…\n// Thank you for playing."
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -76,9 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(typeLine, 500);
             }
         } else {
-            // Show initial log before first puzzle
+            //Show initial log before first puzzle
             typeLog(0, () => {
-                // Only show first puzzle instructions after log finishes
+                //Only show first puzzle instructions after log finishes
                 setTimeout(() => {
                     typeInstruction(1);
                 }, 500);
@@ -95,7 +95,7 @@ function typeInstruction(lockNumber, callback) {
     let charIndex = 0;
 
     instructionElement.innerHTML = "";
-    instructionElement.style.display = "block"; // Make sure it's visible
+    instructionElement.style.display = "block"; //Make sure it's visible
 
     function typeLine() {
         if (charIndex < instructionText.length) {
@@ -115,7 +115,7 @@ function typeInstruction(lockNumber, callback) {
 }
 
 function typeLog(lockNumber, callback) {
-    // Make sure the log container exists before the first instruction element
+    //Make sure the log container exists before the first instruction element
     let logContainer = document.getElementById(`log${lockNumber}`);
     
     if (!logContainer) {
@@ -124,11 +124,11 @@ function typeLog(lockNumber, callback) {
         logContainer.className = 'log-entry';
         
         if (lockNumber === 0) {
-            // For the first log, place it before the first instruction
+            //For the first log, place it before the first instruction
             const firstInstruction = document.getElementById("instruction1");
             firstInstruction.parentNode.insertBefore(logContainer, firstInstruction);
         } else {
-            // Insert after the current puzzle's submit button
+            //Insert after the current puzzle's submit button
             const currentLock = document.querySelector(`#submit${lockNumber}`).parentNode;
             if (currentLock.nextSibling) {
                 currentLock.parentNode.insertBefore(logContainer, currentLock.nextSibling);
@@ -180,9 +180,9 @@ function handleLock(lockNumber) {
         const lock = lockData[lockNumber];
 
         if (userInput === lock.code) {
-            // Show log first
+            //Show log first
             typeLog(lockNumber, () => {
-                // After log finishes, proceed to next instruction or final message
+                //After log finishes, proceed to next instruction or final message
                 if (lock.nextClass) {
                     if (lockNumber === 1) {
                         const lock2Element = document.getElementById("lock2");
@@ -190,7 +190,7 @@ function handleLock(lockNumber) {
                             lock2Element.style.display = "block";
                         }
                     }
-                    // If this is lock 7 (second to last), show instruction 8 but handle the special case
+                    //If this is lock 7 (second to last), show instruction 8 but handle the special case
                     if (lockNumber === 7) {
                         setTimeout(() => {
                             typeInstruction(lockNumber + 1);
@@ -201,9 +201,9 @@ function handleLock(lockNumber) {
                         }, 500);
                     }
                 } else {
-                    // This is the last lock (8)
+                    //This is the last lock (8)
                     setTimeout(() => {
-                        // Show the final log only once
+                        //Show the final log only once
                         typeLog(8, () => {
                             setTimeout(() => {
                                 alert("Congratulations! All locks are open. Please enter the last combination password to the physical lock box.");
@@ -218,7 +218,7 @@ function handleLock(lockNumber) {
     }
 }
 
-// Set up event listeners for all submit buttons
+//Set up event listeners for all submit buttons
 for (let i = 1; i <= 8; i++) {
     const button = document.getElementById("submit" + i);
     if (button !== null) {
