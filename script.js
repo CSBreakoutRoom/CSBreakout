@@ -11,7 +11,7 @@ const lockData = {
     2: { code: "26075969", nextClass: "pass3" },
     3: { code: "3491", nextClass: "pass4" },
     4: { code: "8100", nextClass: "pass5" },
-    5: { code: "2695", nextClass: "pass6" },
+    5: { code: "81169", nextClass: "pass6" },
     6: { code: "912719", nextClass: "pass7" },
     7: { code: "B5C10", nextClass: "pass8" },
     8: { code: "4132", nextClass: null }
