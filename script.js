@@ -25,7 +25,7 @@ const instructions = {
     5: "The machine obeys instructions… but only those that are precise. Feed it numbers - watch where they go. It is not enough to see what it spits out. You must understand why. The pattern is there… Discover it, and the lock will yield.",
     6: "Chaos, out of order. The system's memory is scrambled. Observe. Watch the sorting unfold. From disorder, truth arises. The key lies in the movement - track it well, and you will find your code buried in order.",
     7: "A solitary unit still functions… blindly. Its path is laid out in commands, but it cannot see. Only those who understand its language will guide it safely. The destination holds the next cipher. Do not let it fall.",
-    8: "This is the sum of all understanding. Logic itself now asks for tribute. Decipher the patterns of truth. Listen to each of their voices. Only then will the final gate crumble."
+    8: "This is the sum of all understanding. Logic itself now asks for tribute. Decipher the patterns of truth. Listen to each of their voices and combine them. Only then will the final gate crumble."
 };
 
 const logs = {
