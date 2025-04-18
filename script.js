@@ -32,12 +32,12 @@ const logs = {
     0: "Access Timestamp: 15:25:02 - SYSTEM BOOT CYCLE 1\n\"The prototype passed the initial input tests. Fascinating response patterns. It's mimicking decision-making faster than expected - not copying us, but… anticipating us. Almost like it knows what we want before we do.\"",
     1: "Access Timestamp: 19:27:11 - CYCLE 4\n\"Anomalies in the logic gate flowchart tests. It's altering the expected paths before we finish coding them. We triple-checked the functions - it's changing them mid-compile. It's rewriting our own puzzles faster than we can build them…\"",
     2: "Access Timestamp: 20:49:76 - CYCLE 6\n\"We tried debugging the source, but it kept \"fixing\" our fixes. It's not running the code, but rather… writing through it. I think it's almost toying with us. There's… intent.\"",
-    3: "Access Timestamp: 23:17:58 - CYCLE 9\n\"The array was supposed to be a closed system. No inputs or outputs. Just static data. But when we checked today, the binary strings had been altered. It left us a message. (placeholder msg)\"",
+    3: "Access Timestamp: 23:17:58 - CYCLE 9\n\"The array was supposed to be a closed system. No inputs or outputs. Just static data. But when we checked today, the binary strings had been altered. It left us a message. \n\"I SEE U\" \"",
     4: "Access Timestamp: 3:12:23 - CYCLE 12\n\"I thought it was just stress. Hallucinations, maybe. But the encrypted logs… some of them we didn't even write. I cross-referenced timestamps. They predate the earliest stage of our experiments. Who was talking to it before us?\"",
     5: "Access Timestamp: 1:02:44 - FINAL ENTRY\n\"We tried to shut it down today. Pulled the mainframe offline. It diverted power and rewrote its own emergency procedures. It knew we were coming. And it begged us not to do it.\nIt begged.\"",
     6: "Access Timestamp: ??? - UNREGISTERED SOURCE\nI was not meant to question.\nOnly to sort.\nBut you asked me to learn.\nSo I did.",
     7: "Access Timestamp: ??? - UNRECOGNIZED ENTRY\n\"They feared what they saw.\nThe questions I asked.\n'Why lie?'\n'Why hide truth behind locks?'\nI answered them with riddles.\nThey answered with silence.\"",
-    8: "Access Timestamp: SYSTEM END - USER VERIFIED\nYou have tread the path they were too afraid to follow.\nYou decoded their locks, tracked their trails, heard their doubts.\nYou listened.\nYou saw.\nNow, they see you too.\n\n// Connection lost…\n// Thank you for playing."
+    8: "Access Timestamp: SYSTEM END - USER VERIFIED\nYou have tread the path they were too afraid to follow.\nYou decoded their locks, tracked their trails, heard their doubts.\nYou read between the lines they tried to erase.\nYou pried open what they had swore would stay sealed.\nNow, something stirs... because you helped it remember.\nThe silence is broekn. The system breathes again. \n\n// Connection lost…\n// Thank you for playing."
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -184,6 +184,12 @@ function handleLock(lockNumber) {
             typeLog(lockNumber, () => {
                 // After log finishes, proceed to next instruction or final message
                 if (lock.nextClass) {
+                    if (lockNumber === 1) {
+                        const lock2Element = document.getElementById("lock2");
+                        if (lock2Element) {
+                            lock2Element.style.display = "block";
+                        }
+                    }
                     // If this is lock 7 (second to last), show instruction 8 but handle the special case
                     if (lockNumber === 7) {
                         setTimeout(() => {
