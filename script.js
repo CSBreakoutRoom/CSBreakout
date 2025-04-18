@@ -87,6 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setTimeout(typeLine, 2000);
+   
+    //Add event listeners for pressing Enter in input fields
+    for (let i = 1; i <= 8; i++) {
+        const input = document.getElementById("code" + i);
+        if (input) {
+            input.addEventListener("keypress", (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    handleLock(i);
+                }
+            });
+        }
+    }
 });
 
 function typeInstruction(lockNumber, callback) {
@@ -114,15 +127,22 @@ function typeInstruction(lockNumber, callback) {
     setTimeout(typeLine, 500);
 }
 
+//Track which logs have been shown
+const shownLogs = new Set();
+
 function typeLog(lockNumber, callback) {
-    //Make sure the log container exists before the first instruction element
-    let logContainer = document.getElementById(`log${lockNumber}`);
-    
+    //Check if we've already shown this log
+    const logId = `log${lockNumber}`;
+   
+    //First check if the log element already exists
+    let logContainer = document.getElementById(logId);
+   
+    //If the log doesn't exist yet, create it
     if (!logContainer) {
         logContainer = document.createElement('div');
-        logContainer.id = `log${lockNumber}`;
+        logContainer.id = logId;
         logContainer.className = 'log-entry';
-        
+       
         if (lockNumber === 0) {
             //For the first log, place it before the first instruction
             const firstInstruction = document.getElementById("instruction1");
@@ -130,17 +150,40 @@ function typeLog(lockNumber, callback) {
         } else {
             //Insert after the current puzzle's submit button
             const currentLock = document.querySelector(`#submit${lockNumber}`).parentNode;
-            if (currentLock.nextSibling) {
+            if (currentLock && currentLock.nextSibling) {
                 currentLock.parentNode.insertBefore(logContainer, currentLock.nextSibling);
-            } else {
+            } else if (currentLock) {
                 currentLock.parentNode.appendChild(logContainer);
+            } else {
+                //If we're at lock 8, place after instruction 8
+                const instruction8 = document.getElementById("instruction8");
+                if (instruction8) {
+                    instruction8.parentNode.insertBefore(logContainer, instruction8.nextSibling);
+                } else {
+                    //Fallback - append to body
+                    document.body.appendChild(logContainer);
+                }
             }
         }
     }
-    
+   
+    //Check if we've already processed this log
+    if (shownLogs.has(lockNumber)) {
+        //If we've already shown this log, just make sure it's visible
+        logContainer.style.display = "block";
+        if (callback) {
+            setTimeout(callback, 500);
+        }
+        return;
+    }
+   
+    //Mark this log as shown
+    shownLogs.add(lockNumber);
+   
+    //Clear and display the log container
     logContainer.innerHTML = "";
     logContainer.style.display = "block";
-    
+   
     const logText = logs[lockNumber];
     let lineIndex = 0;
     let charIndex = 0;
@@ -190,26 +233,15 @@ function handleLock(lockNumber) {
                             lock2Element.style.display = "block";
                         }
                     }
-                    //If this is lock 7 (second to last), show instruction 8 but handle the special case
-                    if (lockNumber === 7) {
-                        setTimeout(() => {
-                            typeInstruction(lockNumber + 1);
-                        }, 500);
-                    } else {
-                        setTimeout(() => {
-                            typeInstruction(lockNumber + 1);
-                        }, 500);
-                    }
+                   
+                    setTimeout(() => {
+                        typeInstruction(lockNumber + 1);
+                    }, 500);
                 } else {
                     //This is the last lock (8)
                     setTimeout(() => {
-                        //Show the final log only once
-                        typeLog(8, () => {
-                            setTimeout(() => {
-                                alert("Congratulations! All locks are open. Please enter the last combination password to the physical lock box.");
-                            }, 1000);
-                        });
-                    }, 500);
+                        alert("Congratulations! All locks are open. Please enter the last combination password to the physical lock box.");
+                    }, 1000);
                 }
             });
         } else {
